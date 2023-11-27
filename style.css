@@ -388,13 +388,354 @@ input::placeholder {
     margin-bottom: 10px;
 }
 
-img{
+#camera {
+    transform: scaleX(-1);
+}
+
+img {
     width: 250px;
 }
 
-#comentarios-section{
+#comentarios-section {
     margin-top: 100px;
     margin-left: 200px;
 }
 
 /* FIM HEADER */
+
+.retangulo {
+    background-color: #6D5448;
+    width: auto;
+    height: 130px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 400px;
+    margin-top: 100px;
+}
+
+.nome-livro {
+    color: #F8F1EE;
+    margin-right: 68px;
+}
+
+.nome-livro2 {
+    color: #F8F1EE;
+    margin-right: 100px;
+}
+
+.nome-livro3 {
+    color: #F8F1EE;
+    margin-right: 15px;
+}
+
+.nome-livro4 {
+    color: #F8F1EE;
+    margin-right: 170px;
+}
+
+.nome-livro5 {
+    color: #F8F1EE;
+    margin-right: 130px;
+}
+
+.nome-livro7 {
+    color: #F8F1EE;
+    margin-right: -9%;
+}
+
+.nome-livro8 {
+    color: #F8F1EE;
+    margin-right: 6%;
+}
+
+.nome-livro9 {
+    color: #F8F1EE;
+    margin-right: -3%;
+}
+
+.nome-livro10 {
+    color: #F8F1EE;
+    margin-right: 6%;
+}
+
+.nome-livro11 {
+    color: #F8F1EE;
+    margin-right: -7%;
+}
+
+.nome-livro12 {
+    color: #F8F1EE;
+    margin-right: -7%;
+}
+
+.titulo {
+    font-size: 30px;
+}
+
+.titulo,
+.nome1 {
+    font-family: 'Young-serif';
+}
+
+.nome2 {
+    font-style: italic;
+    font-family: 'Poppins-regular';
+}
+
+.autor {
+    font-family: 'Poppins-regular';
+}
+
+.nome1 {
+    font-size: 20px;
+}
+
+.irmaos {
+    width: 330px;
+    height: 440px;
+    transition: transform 0.3s;
+    margin-top: -120px;
+    margin-right: 60px;
+    border-radius: 10px;
+}
+
+.irmaos:hover {
+    transform: scale(1.1);
+}
+
+.div1 {
+    width: 480px;
+    height: 3px;
+    background-color: #3C2520;
+    margin-top: 10px;
+}
+
+.preco {
+    font-size: 22px;
+    color: #522318;
+    font-family: 'Poppins-Semi';
+}
+
+.desconto {
+    color: #B99B8D;
+    font-size: 20px;
+}
+
+.frase-livro {
+    font-style: italic;
+    font-family: 'Poppins-regular';
+    color: #522318;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.sinopse {
+    font-family: 'Poppins-regular';
+    color: #522318;
+    font-size: 17px;
+    margin-top: 15px;
+    text-align: justify;
+    width: 470px;
+}
+
+.image-card {
+    display: inline-block;
+    margin: 40px;
+    text-align: center;
+}
+
+.image-card img {
+    max-width: 100%;
+}
+
+.image-card p {
+    font-family: 'Poppins-regular';
+    color: #522318;
+    font-size: 13px;
+}
+
+.icon {
+    width: 33px;
+    height: 33px;
+    font-size: 10px;
+}
+
+.icon-coracao {
+    width: 33px;
+    height: 33px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+.content {
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+#botao-compra {
+    width: 882px;
+    margin-top: 35px;
+    background-color: #3C2520;
+    color: white;
+    height: 53px;
+    border-radius: 17px;
+    font-family: 'Young-serif';
+    font-size: 20px;
+    margin-left: 34px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#botao-compra:hover {
+    background-color: #aa9e9b;
+}
+
+.compre {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.titulo-produto {
+    margin-top: 30px;
+    display: flex;
+}
+
+.retangulo-div {
+    background-color: #3C2520;
+    width: 670px;
+    height: 3px;
+    margin-top: 65px;
+    margin-left: 30px;
+}
+
+.detalhes {
+    font-family: 'Young-serif';
+    font-size: 30px;
+    margin-left: 274px;
+    margin-top: 45px;
+}
+
+.detalhes-produto {
+    margin-top: 30px;
+}
+
+.lista {
+    font-family: 'Young-serif';
+    line-height: 45px;
+    font-size: 20px;
+}
+
+.info-spam {
+    font-family: 'Poppins-regular';
+    font-size: 18px;
+}
+
+.informacao {
+    margin-top: 27px;
+    margin-left: 273px;
+}
+
+.reta-divisao {
+    background-color: #3C2520;
+    width: 1036px;
+    height: 15px;
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.retangulo-div2 {
+    background-color: #3C2520;
+    width: 537px;
+    height: 3px;
+    margin-top: 65px;
+    margin-left: 30px;
+}
+
+.titulo-sugestao {
+    display: flex;
+}
+
+.jogo1 {
+    width: 170px;
+    height: 230px;
+    margin: auto;
+    border-right: 10px solid #B99B8D;
+    border-bottom: 10px solid #B99B8D;
+}
+
+.titulo-sug {
+    font-family: 'Young-serif';
+    font-size: 20px;
+}
+
+.escritor {
+    font-family: 'Poppins-regular';
+}
+
+.jogo1::before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 100%;
+    background-color: #d2a078;
+    right: 0;
+    bottom: 0;
+}
+
+.tudo {
+    display: flex;
+    justify-content: center;
+}
+
+.divisao-final {
+    background-color: #3C2520;
+    width: 1050px;
+    height: 3px;
+    margin: 0 auto;
+    margin-top: 90px;
+}
+
+.info2 {
+    left: 50px;
+}
+
+.classificacao {
+    display: flex;
+}
+
+.classi {
+    width: 20px;
+    height: 20px;
+    margin-top: 12px;
+    margin-left: 10px
+}
+
+.aval {
+    display: flex;
+}
+
+.estrela {
+    width: 120px;
+    height: 25px;
+    margin-top: 8px;
+    margin-left: 10px;
+}
+
+.coment{
+    font-family: 'Young-serif';
+    font-size: 30px;
+    margin-left: 274px;
+    margin-top: 45px;
+}
+
+.retanguloo{
+    background-color: #3C2520;
+    width: 1036px;
+    height: 15px;
+    border-radius: 25px;
+    margin: 0 auto;
+    margin-top: 48px;
+}
