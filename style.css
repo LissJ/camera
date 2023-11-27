@@ -390,10 +390,15 @@ input::placeholder {
 
 #camera {
     transform: scaleX(-1);
+    border-radius: 15px;
+    width: 300px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 img {
     width: 250px;
+    border-radius: 10px;
 }
 
 #comentarios-section {
@@ -739,3 +744,145 @@ img {
     margin: 0 auto;
     margin-top: 48px;
 }
+
+#commentInput{
+    padding: 12px 30px;
+    width: 460px;
+    margin-right: 7px;
+    border-radius: 15px;
+}
+
+#commentInput::placeholder{
+    color: #3C2520;
+}
+
+.botaozinho{
+    font-family: 'Poppins-regular';
+    cursor: pointer;
+    background-color: #3C2520;
+    color: #F8F1EE;
+    padding: 12px 30px;
+    border-radius: 15px;
+}
+
+.comentar{
+    margin-top: 50px;
+    margin-left: 271px;
+}
+
+.commentImage{
+    transform: scaleX(-1);
+    margin-left: 30px;
+    /* margin-top: 31px; */
+    margin-bottom: 25px;
+}
+
+/* .background{
+    
+} */
+
+.commentContainer{
+    background-color: #3C2520;
+    border-radius: 20px;
+    width: 984px;
+    padding-top: 28px;
+    padding-bottom: 7px;
+    margin-bottom: 30px;
+}
+
+.retanguulo{
+    background-color: #3C2520;
+    width: 984px;
+    height: 3px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    /* margin-left: 30px; */
+}
+
+.commentText{
+    font-family: 'Poppins-regular';
+    font-size: 14px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    color: #F8F1EE;
+}
+
+.deleteButton{
+    cursor: pointer;
+    font-family: 'Poppins-regular';
+    background-color: #B99B8D;
+    color: #F8F1EE;
+    font-size: 12px;
+    padding: 12px 30px;
+    margin-left: 30px;
+    border-radius: 15px;
+    margin-bottom: 45px;
+    width: 95px;
+}
+
+/* INICIO FOOTER */
+
+footer {
+    background-color: #3C2520;
+  }
+  
+  #footer{
+    margin-top: 100px;
+  }
+  
+  .container-footer,
+  .parte1,
+  .part2,
+  .logo-footer {
+    display: flex;
+  }
+  
+  .container-footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 4% 6%;
+    margin-top: 90px;
+  }
+  
+  .container-footer nav {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    font-family: 'Young-serif';
+    font-size: 22px;
+  
+  }
+  
+  .container-footer nav a {
+    margin: 12px 19px;
+    color: #E3CFBC;
+  }
+  
+  .redes-sociais {
+    display: grid;
+    justify-items: center;
+  }
+  
+  .redes-sociais img {
+    margin: 15px 0;
+  }
+  
+  .logo-footer {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo-footer img {
+    width: 137px;
+  }
+  
+  .logo-footer h2 {
+    padding-left: 37px;
+    font-family: 'Young-serif';
+    font-size: 31.56px;
+    color: #E3CFBC;
+  }
+  
+  /* FIM FOOTER */

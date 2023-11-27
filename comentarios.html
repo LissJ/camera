@@ -84,7 +84,8 @@
             <div class="retangulo">
                 <div class="nome-livro">
                     <h1 class="titulo">Os Irmãos Hawthorne</h1>
-                    <p class="autor">por <span class="nome1">Jennifer Lynn Barnes </span><span class="nome2">(Autor)</span>
+                    <p class="autor">por <span class="nome1">Jennifer Lynn Barnes </span><span
+                            class="nome2">(Autor)</span>
                     </p>
                 </div>
             </div>
@@ -97,17 +98,19 @@
                         <div class="info2">
                             <div class="div1"></div>
                             <p class="preco">R$68,90 <span class="desconto"> <s>R$78,00</s></span></p>
-    
+
                             <p class="frase-livro">A busca pela felicidade numa sociedade individualista.</p>
-                            <p class="sinopse">Com a ajuda de seus irmãos e de Avery, Grayson e Jameson vão enfrentar jogos
+                            <p class="sinopse">Com a ajuda de seus irmãos e de Avery, Grayson e Jameson vão enfrentar
+                                jogos
                                 perigosos em
-                                diferentes lugares do mundo e devem olhar mais fundo para decidir quem desejam ser e o que
+                                diferentes lugares do mundo e devem olhar mais fundo para decidir quem desejam ser e o
+                                que
                                 cada
                                 um
                                 está
                                 disposto a sacrificar pela vitória.</p>
-    
-    
+
+
                             <div class="content">
                                 <div class="image-card">
                                     <img class="icon" src="img produto/livro icone.png" alt="livro icone">
@@ -119,10 +122,11 @@
                                 </div>
                                 <div class="image-card">
                                     <button class="produtinhos" onclick="addCarrinho('Os Irmãos Hawthorne', 68.90)">
-                                        <img class="icon-coracao" src="img produto/coracao icone.png" alt="produto icone"
-                                            id="coracao-vazio" onclick="alternarContador()">
-                                        <img class="icon-coracaoP" src="img produto/cora-pintado.png" alt="produto icone"
-                                            id="coracao-pintado" style="display: none;" onclick="alternarContador()">
+                                        <img class="icon-coracao" src="img produto/coracao icone.png"
+                                            alt="produto icone" id="coracao-vazio" onclick="alternarContador()">
+                                        <img class="icon-coracaoP" src="img produto/cora-pintado.png"
+                                            alt="produto icone" id="coracao-pintado" style="display: none;"
+                                            onclick="alternarContador()">
                                     </button>
                                     <p class="espec-coracao" id="contador-coracao" data-ativo="false"
                                         data-valor-inicial="153">
@@ -132,13 +136,13 @@
                         </div>
                     </div>
                 </div>
-    
+
             </div>
             </section>
             <div class="compre">
                 <button id="botao-compra">Compre Já !</button>
             </div>
-    
+
             <div class="detalhes-produto">
                 <div class="titulo-produto">
                     <h1 class="detalhes">Detalhes do produto</h1>
@@ -161,153 +165,135 @@
             </div>
 
             <div class="retanguloo"></div>
-    </main>
+        </main>
 
-    <h1 class="coment">O que você achou do produto?</h1>
+        <h1 class="coment">O que você achou do produto?</h1>
 
-    <video id="camera" autoplay></video>
-    <div id="foto"></div>
-    <button onclick="abrirCamera()">Abrir Camera</button>
-    <button onclick="tirarFoto()">Tirar Foto</button>
-    <button onclick="fechar()">Fechar Camera</button>
+        <section class="comentar">
 
-    <!-- Botão de download inicialmente oculto -->
-    <a id="downloadLink" download="foto.png" style="display: none;">Clique para baixar</a>
 
-    <!-- Área de comentários -->
-    <div id="comments">
-        <input type="text" id="commentInput" placeholder="Digite seu comentário">
-        <button onclick="postarComentario()">Postar Comentário</button>
-        <div id="commentSection"></div>
-    </div>
+            <!-- Botão de download inicialmente oculto -->
+            <!-- <a id="downloadLink" download="foto.png" style="display: none;">Clique para baixar</a> -->
 
-    <script>
-        var mediaStream;
-        var downloadLink = document.getElementById('downloadLink');
-        var commentInput = document.getElementById('commentInput');
-        var commentSection = document.getElementById('commentSection');
+            <div id="foto"></div>
+            <div class="buttons">
+                <button class="botaozinho" onclick="abrirCamera()">Abrir Camera</button>
+                <button class="botaozinho" onclick="tirarFoto()">Tirar Foto</button>
+                <button class="botaozinho" onclick="fechar()">Fechar Camera</button>
+            </div>
+            <video id="camera" autoplay></video>
+            <!-- Área de comentários -->
+            <div id="comments">
+                <input type="text" id="commentInput" placeholder="Digite seu comentário">
+                <button class="botaozinho" onclick="postarComentario()">Postar Comentário</button>
 
-        // Carrega os comentários armazenados localmente ao carregar a página
-        window.onload = function () {
-            carregarComentarios();
-        };
+                <div class="retanguulo"></div>
+                <div class="background" id="commentSection"></div>
+            </div>
 
-        function abrirCamera() {
-            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-                .then(function (stream) {
-                    mediaStream = stream;
-                    const areaVideo = document.getElementById('camera');
-                    areaVideo.srcObject = stream;
-                })
-                .catch(function (error) {
-                    console.error('Erro ao acessar a câmera:', error);
-                });
-        }
+            <div class="retanguulo"></div>
+        </section>
 
-        function tirarFoto() {
-            const areaVideo = document.getElementById('camera');
-            const canvas = document.createElement('canvas');
-            canvas.width = areaVideo.videoWidth;
-            canvas.height = areaVideo.videoHeight;
-            const context = canvas.getContext('2d');
-            context.drawImage(areaVideo, 0, 0, canvas.width, canvas.height);
-            const imageDataURL = canvas.toDataURL();
-            const fotoDiv = document.getElementById('foto');
-            fotoDiv.style.backgroundImage = `url(${imageDataURL})`;
+        <footer id="footer">
+            <div class="container-footer">
+                <nav>
+                    <div class="parte1">
+                        <a href="#">Produtos</a>
+                        <a href="#">Lançamentos</a>
+                        <a href="#">Pré-venda</a>
+                    </div>
+                    <div class="parte2">
+                        <a href="#">Favoritos</a>
+                        <a href="#">Sustentabilidade</a>
+                        <a href="#">Sobre nós</a>
+                    </div>
+                </nav>
+                <div class="redes-sociais">
+                    <a href="mailto:editoralenabi@gmail.com" target="_blank"><img src="img-interface/carbon_email.svg"
+                            alt=""></a>
+                    <a href="https://www.instagram.com/editoralenabi/?igshid=YTQwZjQ0NmI0OA%3D%3D" target="_blank"><img
+                            src="img-interface/uil_instagram.svg" alt=""></a>
+                    <a href="https://x.com/LeNabiEditora?t=-ry8Op0ZSihvYuzXTeuZ8w&s=09" target="_blank"><img
+                            src="img-interface/simple-icons_x.svg" alt=""></a>
+                </div>
+                <div class="logo-footer">
+                    <img src="img-interface/lenabi 1.png" alt="logo">
+                    <h2>LeNabi</h2>
+                </div>
+            </div>
+        </footer>
 
-            // Atualiza o botão de download
-            downloadLink.href = imageDataURL;
-            downloadLink.style.display = 'inline-block';
+        <script>
+            var mediaStream;
+            var downloadLink = document.getElementById('downloadLink');
+            var commentInput = document.getElementById('commentInput');
+            var commentSection = document.getElementById('commentSection');
 
-            // Simula um clique no botão de download para iniciar o download
-            downloadLink.click();
-        }
+            // Carrega os comentários armazenados localmente ao carregar a página
+            window.onload = function () {
+                carregarComentarios();
+            };
 
-        function fechar() {
-            if (mediaStream) {
-                mediaStream.getTracks().forEach(track => track.stop());
+            function abrirCamera() {
+                navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                    .then(function (stream) {
+                        mediaStream = stream;
+                        const areaVideo = document.getElementById('camera');
+                        areaVideo.srcObject = stream;
+                    })
+                    .catch(function (error) {
+                        console.error('Erro ao acessar a câmera:', error);
+                    });
             }
 
-            const areaVideo = document.getElementById('camera');
-            areaVideo.srcObject = null;
-            mediaStream = null;
+            function tirarFoto() {
+                const areaVideo = document.getElementById('camera');
+                const canvas = document.createElement('canvas');
+                canvas.width = areaVideo.videoWidth;
+                canvas.height = areaVideo.videoHeight;
+                const context = canvas.getContext('2d');
+                context.drawImage(areaVideo, 0, 0, canvas.width, canvas.height);
+                const imageDataURL = canvas.toDataURL();
+                const fotoDiv = document.getElementById('foto');
+                fotoDiv.style.backgroundImage = `url(${imageDataURL})`;
 
-            // Oculta o botão de download ao fechar a câmera
-            downloadLink.style.display = 'none';
-        }
+                // Atualiza o botão de download
+                downloadLink.href = imageDataURL;
+                downloadLink.style.display = 'inline-block';
 
-        function postarComentario() {
-            const comentario = commentInput.value;
-            if (comentario.trim() !== '') {
-                const commentContainer = document.createElement('div');
-                commentContainer.classList.add('commentContainer');
-
-                // Adiciona o texto do comentário
-                const commentText = document.createElement('div');
-                commentText.classList.add('commentText');
-                commentText.textContent = comentario;
-                commentContainer.appendChild(commentText);
-
-                // Adiciona a imagem do comentário
-                const commentImage = document.createElement('img');
-                commentImage.classList.add('commentImage');
-                commentImage.src = document.getElementById('foto').style.backgroundImage.slice(5, -2); // Obtém a URL da imagem
-                commentContainer.appendChild(commentImage);
-
-                // Adiciona o botão de exclusão
-                const deleteButton = document.createElement('div');
-                deleteButton.classList.add('deleteButton');
-                deleteButton.textContent = 'Excluir';
-                deleteButton.onclick = function () {
-                    commentContainer.remove();
-                    salvarComentarios();
-                };
-                commentContainer.appendChild(deleteButton);
-
-                // Adiciona o contêiner de comentário à área de comentários
-                commentSection.appendChild(commentContainer);
-
-                // Limpa o campo de entrada
-                commentInput.value = '';
-
-                // Armazena os comentários localmente
-                salvarComentarios();
-            }
-        }
-
-        function salvarComentarios() {
-            const comentarios = [];
-            const commentDivs = document.getElementById('commentSection').children;
-            for (let i = 0; i < commentDivs.length; i++) {
-                const comentario = {
-                    texto: commentDivs[i].querySelector('.commentText').textContent,
-                    imagem: commentDivs[i].querySelector('.commentImage').src
-                };
-                comentarios.push(comentario);
+                // Simula um clique no botão de download para iniciar o download
+                downloadLink.click();
             }
 
-            // Armazena os comentários no localStorage
-            localStorage.setItem('comentarios', JSON.stringify(comentarios));
-        }
+            function fechar() {
+                if (mediaStream) {
+                    mediaStream.getTracks().forEach(track => track.stop());
+                }
 
-        function carregarComentarios() {
-            const comentarios = localStorage.getItem('comentarios');
-            if (comentarios) {
-                const commentDivs = JSON.parse(comentarios);
-                for (let i = 0; i < commentDivs.length; i++) {
+                const areaVideo = document.getElementById('camera');
+                areaVideo.srcObject = null;
+                mediaStream = null;
+
+                // Oculta o botão de download ao fechar a câmera
+                downloadLink.style.display = 'none';
+            }
+
+            function postarComentario() {
+                const comentario = commentInput.value;
+                if (comentario.trim() !== '') {
                     const commentContainer = document.createElement('div');
                     commentContainer.classList.add('commentContainer');
 
                     // Adiciona o texto do comentário
                     const commentText = document.createElement('div');
                     commentText.classList.add('commentText');
-                    commentText.textContent = commentDivs[i].texto;
+                    commentText.textContent = comentario;
                     commentContainer.appendChild(commentText);
 
                     // Adiciona a imagem do comentário
                     const commentImage = document.createElement('img');
                     commentImage.classList.add('commentImage');
-                    commentImage.src = commentDivs[i].imagem;
+                    commentImage.src = document.getElementById('foto').style.backgroundImage.slice(5, -2); // Obtém a URL da imagem
                     commentContainer.appendChild(commentImage);
 
                     // Adiciona o botão de exclusão
@@ -322,10 +308,66 @@
 
                     // Adiciona o contêiner de comentário à área de comentários
                     commentSection.appendChild(commentContainer);
+
+                    // Limpa o campo de entrada
+                    commentInput.value = '';
+
+                    // Armazena os comentários localmente
+                    salvarComentarios();
                 }
             }
-        }
-    </script>
+
+            function salvarComentarios() {
+                const comentarios = [];
+                const commentDivs = document.getElementById('commentSection').children;
+                for (let i = 0; i < commentDivs.length; i++) {
+                    const comentario = {
+                        texto: commentDivs[i].querySelector('.commentText').textContent,
+                        imagem: commentDivs[i].querySelector('.commentImage').src
+                    };
+                    comentarios.push(comentario);
+                }
+
+                // Armazena os comentários no localStorage
+                localStorage.setItem('comentarios', JSON.stringify(comentarios));
+            }
+
+            function carregarComentarios() {
+                const comentarios = localStorage.getItem('comentarios');
+                if (comentarios) {
+                    const commentDivs = JSON.parse(comentarios);
+                    for (let i = 0; i < commentDivs.length; i++) {
+                        const commentContainer = document.createElement('div');
+                        commentContainer.classList.add('commentContainer');
+
+                        // Adiciona o texto do comentário
+                        const commentText = document.createElement('div');
+                        commentText.classList.add('commentText');
+                        commentText.textContent = commentDivs[i].texto;
+                        commentContainer.appendChild(commentText);
+
+                        // Adiciona a imagem do comentário
+                        const commentImage = document.createElement('img');
+                        commentImage.classList.add('commentImage');
+                        commentImage.src = commentDivs[i].imagem;
+                        commentContainer.appendChild(commentImage);
+
+                        // Adiciona o botão de exclusão
+                        const deleteButton = document.createElement('div');
+                        deleteButton.classList.add('deleteButton');
+                        deleteButton.textContent = 'Excluir';
+                        deleteButton.onclick = function () {
+                            commentContainer.remove();
+                            salvarComentarios();
+                        };
+                        commentContainer.appendChild(deleteButton);
+
+                        // Adiciona o contêiner de comentário à área de comentários
+                        commentSection.appendChild(commentContainer);
+                    }
+                }
+            }
+        </script>
 </body>
 
 </html>
