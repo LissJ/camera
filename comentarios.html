@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editora LeNabi</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <script src="comentarios.js"></script> -->
+
+    <script src="https://kit.fontawesome.com/a2288264db.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="shortcut icon" href="img-interface/lenabi 1.png" type="image/x-icon">
+    <link rel="stylesheet" href="produto.css">
+    <script src="user.js"></script>
+</head>
+
+<body>
+    <header id="header">
+        <div class="container-fundo">
+            <div class="container">
+                <a href="index.html">
+                    <div class="logo">
+                        <img src="img-interface/lenabi 1.png" alt="borboleta voando dentro de um livro">
+                        <h2>LeNabi</h2>
+                    </div>
+                </a>
+                <div class="buscar">
+                    <input type="text" id="buscar" placeholder="Buscar livro" oninput="buscarProduto()">
+                </div>
+
+                <div id="favoritos" onclick="toggleFavoritos()">
+                    <div class="imagem">
+                        <i class="fa-regular fa-heart" style="color: #522318; "></i>
+                    </div>
+                    <span id="cont-favoritos">0</span>
+                </div>
+                <div id="carrinho-itens" style="display: none;">
+                    <ul id="itens-lista"></ul>
+                    <span id="preco-total">Valor Total: R$0,00</span>
+                    <button class="car" onclick="limparCarrinho()">Limpar Carrinho</button>
+                </div>
+                <!-- Dentro da div do usuário logado -->
+                <div class="usuario-logado" id="userHeader" onclick="mostrarOcultarPopup()">
+                    <i class="fa-solid fa-user" style="color: #522318;"></i>
+                    <span id="nomeUsuario"></span>
+                </div>
+                <div id="popup" style="display: none;">
+                    <div class="popup-conteudo">
+                        <img src="img-interface/Group 20.svg" alt="">
+                        <span id="conteudoPopup"></span>
+                        <span id="emailUsuario"></span>
+                        <br>
+
+                    </div>
+                    <button class="botaoSair" onclick="logout()">
+                        <p>Sair</p>
+                        <i id="logoutButton" class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </div>
+
+
+
+                <a href="login.html" class="button" id="loginButton"><span>Fazer login</span></a>
+            </div>
+        </div>
+
+        <nav>
+            <div class="botoes">
+                <a href="produto.html#pre-venda">Pré-Venda</a>
+                <a href="produto.html#lancamentos-page">Lançamentos</a>
+                <a href="produto.html">Produtos</a>
+                <a href="sustentabilidade.html">Sustentabilidade</a>
+
+            </div>
+        </nav>
+    </header>
+
+    <video id="camera" autoplay></video>
+    <div id="foto"></div>
+    <button onclick="abrirCamera()">Abrir Camera</button>
+    <button onclick="tirarFoto()">Tirar Foto</button>
+    <button onclick="fechar()">Fechar Camera</button>
+
+    <!-- Botão de download inicialmente oculto -->
+    <a id="downloadLink" download="foto.png" style="display: none;">Clique para baixar</a>
+
+    <!-- Área de comentários -->
+    <div id="comments">
+        <input type="text" id="commentInput" placeholder="Digite seu comentário">
+        <button onclick="postarComentario()">Postar Comentário</button>
+        <div id="commentSection"></div>
+    </div>
+
+    <script>
+        var mediaStream;
+        var downloadLink = document.getElementById('downloadLink');
+        var commentInput = document.getElementById('commentInput');
+        var commentSection = document.getElementById('commentSection');
+
+        // Carrega os comentários armazenados localmente ao carregar a página
+        window.onload = function () {
+            carregarComentarios();
+        };
+
+        function abrirCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(function (stream) {
+                    mediaStream = stream;
+                    const areaVideo = document.getElementById('camera');
+                    areaVideo.srcObject = stream;
+                })
+                .catch(function (error) {
+                    console.error('Erro ao acessar a câmera:', error);
+                });
+        }
+
+        function tirarFoto() {
+            const areaVideo = document.getElementById('camera');
+            const canvas = document.createElement('canvas');
+            canvas.width = areaVideo.videoWidth;
+            canvas.height = areaVideo.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(areaVideo, 0, 0, canvas.width, canvas.height);
+            const imageDataURL = canvas.toDataURL();
+            const fotoDiv = document.getElementById('foto');
+            fotoDiv.style.backgroundImage = `url(${imageDataURL})`;
+
+            // Atualiza o botão de download
+            downloadLink.href = imageDataURL;
+            downloadLink.style.display = 'inline-block';
+
+            // Simula um clique no botão de download para iniciar o download
+            downloadLink.click();
+        }
+
+        function fechar() {
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+
+            const areaVideo = document.getElementById('camera');
+            areaVideo.srcObject = null;
+            mediaStream = null;
+
+            // Oculta o botão de download ao fechar a câmera
+            downloadLink.style.display = 'none';
+        }
+
+        function postarComentario() {
+            const comentario = commentInput.value;
+            if (comentario.trim() !== '') {
+                const commentContainer = document.createElement('div');
+                commentContainer.classList.add('commentContainer');
+
+                // Adiciona o texto do comentário
+                const commentText = document.createElement('div');
+                commentText.classList.add('commentText');
+                commentText.textContent = comentario;
+                commentContainer.appendChild(commentText);
+
+                // Adiciona a imagem do comentário
+                const commentImage = document.createElement('img');
+                commentImage.classList.add('commentImage');
+                commentImage.src = document.getElementById('foto').style.backgroundImage.slice(5, -2); // Obtém a URL da imagem
+                commentContainer.appendChild(commentImage);
+
+                // Adiciona o contêiner de comentário à área de comentários
+                commentSection.appendChild(commentContainer);
+
+                // Limpa o campo de entrada
+                commentInput.value = '';
+
+                // Armazena os comentários localmente
+                salvarComentarios();
+            }
+        }
+
+        function salvarComentarios() {
+            const comentarios = [];
+            const commentDivs = document.getElementById('commentSection').children;
+            for (let i = 0; i < commentDivs.length; i++) {
+                const comentario = {
+                    texto: commentDivs[i].querySelector('.commentText').textContent,
+                    imagem: commentDivs[i].querySelector('.commentImage').src
+                };
+                comentarios.push(comentario);
+            }
+
+            // Armazena os comentários no localStorage
+            localStorage.setItem('comentarios', JSON.stringify(comentarios));
+        }
+
+        function carregarComentarios() {
+            const comentarios = localStorage.getItem('comentarios');
+            if (comentarios) {
+                const commentDivs = JSON.parse(comentarios);
+                for (let i = 0; i < commentDivs.length; i++) {
+                    const commentContainer = document.createElement('div');
+                    commentContainer.classList.add('commentContainer');
+
+                    // Adiciona o texto do comentário
+                    const commentText = document.createElement('div');
+                    commentText.classList.add('commentText');
+                    commentText.textContent = commentDivs[i].texto;
+                    commentContainer.appendChild(commentText);
+
+                    // Adiciona a imagem do comentário
+                    const commentImage = document.createElement('img');
+                    commentImage.classList.add('commentImage');
+                    commentImage.src = commentDivs[i].imagem;
+                    commentContainer.appendChild(commentImage);
+
+                    // Adiciona o contêiner de comentário à área de comentários
+                    commentSection.appendChild(commentContainer);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Câmera</title>
+    <style>
+        #foto {
+            height: 300px;
+            width: 300px;
+            border-radius: 150px;
+            background-size: cover;
+            background-position: 50%;
+            margin: 20px;
+        }
+
+        #camera {
+            width: 640px;
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="camera" autoplay></video>
+    <div id="foto"></div>
+    <button onclick="abrirCamera()">Abrir Camera</button>
+    <button onclick="tirarFoto()">Tirar Foto</button>
+    <button onclick="fechar()">Fechar Camera</button>
+
+    <!-- Botão de download inicialmente oculto -->
+    <a id="downloadLink" download="foto.png" style="display: none;">Clique para baixar</a>
+
+    <script>
+        var mediaStream;
+        var downloadLink = document.getElementById('downloadLink');
+
+        function abrirCamera() {
+            navigator.mediaDevices.getUserMedia({ video: true, audio: false })
+                .then(function (stream) {
+                    mediaStream = stream;
+                    const areaVideo = document.getElementById('camera');
+                    areaVideo.srcObject = stream;
+                })
+                .catch(function (error) {
+                    console.error('Erro ao acessar a câmera:', error);
+                });
+        }
+
+        function tirarFoto() {
+            const areaVideo = document.getElementById('camera');
+            const canvas = document.createElement('canvas');
+            canvas.width = areaVideo.videoWidth;
+            canvas.height = areaVideo.videoHeight;
+            const context = canvas.getContext('2d');
+            context.drawImage(areaVideo, 0, 0, canvas.width, canvas.height);
+            const imageDataURL = canvas.toDataURL();
+            const fotoDiv = document.getElementById('foto');
+            fotoDiv.style.backgroundImage = `url(${imageDataURL})`;
+
+            // Atualiza o botão de download
+            downloadLink.href = imageDataURL;
+            downloadLink.style.display = 'inline-block';
+
+            // Simula um clique no botão de download para iniciar o download
+            downloadLink.click();
+        }
+
+        function fechar() {
+            if (mediaStream) {
+                mediaStream.getTracks().forEach(track => track.stop());
+            }
+
+            const areaVideo = document.getElementById('camera');
+            areaVideo.srcObject = null;
+            mediaStream = null;
+
+            // Oculta o botão de download ao fechar a câmera
+            downloadLink.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
